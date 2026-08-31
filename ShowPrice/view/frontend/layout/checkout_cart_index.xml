@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+
+        <referenceBlock name="checkout.cart.item.renderers.default">
+
+            <block
+                class="Codilar\ShowPrice\Block\Cart\Sku"
+                name="additional.product.info"
+                as="sku"
+                template="Codilar_ShowPrice::cart/item/sku.phtml"
+                after="-" />
+
+        </referenceBlock>
+
+    </body>
+
+</page>

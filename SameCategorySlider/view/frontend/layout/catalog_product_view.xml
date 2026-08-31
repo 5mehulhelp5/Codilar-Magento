@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+
+        <css src="Codilar_SameCategorySlider::css/same-category-slider.css"/>
+
+    </head>
+
+    <body>
+
+        <referenceContainer name="content.aside">
+
+            <container
+                name="codilar.same.category.slider"
+                label="Same Category Products Slider"
+                htmlTag="div"
+                htmlClass="same-category-products-container"
+                after="catalog.product.related"
+            />
+
+        </referenceContainer>
+
+    </body>
+
+</page>

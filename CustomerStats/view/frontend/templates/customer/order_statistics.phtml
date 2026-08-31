@@ -1,0 +1,45 @@
+<?php
+$lastOrder = $block->getLastOrder();
+?>
+
+<div class="order-statistics">
+
+    <h2>My Order Statistics</h2>
+
+    <div class="statistics-item">
+        <strong>Total Orders:</strong>
+        <span><?= $block->escapeHtml($block->getTotalOrders()) ?></span>
+    </div>
+
+    <div class="statistics-item">
+        <strong>Total Amount Spent:</strong>
+        <span><?= $block->escapeHtml($block->getTotalSpent()) ?></span>
+    </div>
+
+    <div class="statistics-item">
+        <strong>Last Order:</strong>
+
+        <?php if ($lastOrder && $lastOrder->getId()): ?>
+
+            <span>
+                #<?= $block->escapeHtml($lastOrder->getIncrementId()) ?>
+            </span>
+
+        <?php else: ?>
+
+            <span>No orders yet</span>
+
+        <?php endif; ?>
+    </div>
+
+    <div class="statistics-item">
+        <strong>Completed Orders:</strong>
+        <span><?= $block->escapeHtml($block->getCompletedOrders()) ?></span>
+    </div>
+
+    <div class="statistics-item">
+        <strong>Cancelled Orders:</strong>
+        <span><?= $block->escapeHtml($block->getCancelledOrders()) ?></span>
+    </div>
+
+</div>

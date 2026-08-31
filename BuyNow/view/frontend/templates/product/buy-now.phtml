@@ -1,0 +1,23 @@
+<?php if ($block->getProduct()->isSaleable()): ?>
+
+    <button type="button"
+            class="action primary buy-now"
+            data-role="buy-now"
+            data-url="<?= $block->escapeUrl(
+                $block->getUrl(
+                    'buynow/index/buy',
+                    ['product' => $block->getProduct()->getId()]
+                )
+            )?>">
+        <span><?= $block->escapeHtml(__('Buy Now')) ?></span>
+    </button>
+
+    <script type="text/x-magento-init">
+        {
+            "[data-role=buy-now]": {
+                "Codilar_BuyNow/js/buy-now": {}
+            }
+        }
+    </script>
+
+<?php endif; ?>

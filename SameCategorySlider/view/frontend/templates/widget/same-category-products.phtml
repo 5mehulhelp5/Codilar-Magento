@@ -1,0 +1,106 @@
+<?php
+$products = $block->getProducts();
+
+if (!$products->getSize()) {
+    return;
+}
+?>
+
+<div class="same-category-products">
+
+    <div class="same-category-products__header">
+
+        <h2 class="same-category-products__title">
+            <?= $block->escapeHtml(
+                __('Other Products From Same Category')
+            ) ?>
+        </h2>
+
+        <div class="same-category-products__navigation">
+
+            <button
+                type="button"
+                class="same-category-products__prev">
+                &#10094;
+            </button>
+
+            <button
+                type="button"
+                class="same-category-products__next">
+                &#10095;
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="same-category-products__slider swiper">
+
+        <div class="same-category-products__track swiper-wrapper">
+
+            <?php foreach ($products as $product): ?>
+
+                <div class="same-category-products__item swiper-slide">
+
+                    <div class="same-category-products__image">
+
+                        <a href="<?= $block->escapeUrl(
+                            $product->getProductUrl()
+                        ) ?>">
+
+                            <img
+                                src="<?= $block->escapeUrl(
+                                    $block->getProductImageUrl($product)
+                                ) ?>"
+                                alt="<?= $block->escapeHtmlAttr(
+                                    $product->getName()
+                                ) ?>"
+                            >
+
+                        </a>
+
+                    </div>
+
+                    <div class="same-category-products__name">
+
+                        <a href="<?= $block->escapeUrl(
+                            $product->getProductUrl()
+                        ) ?>">
+
+                            <?= $block->escapeHtml(
+                                $product->getName()
+                            ) ?>
+
+                        </a>
+
+                    </div>
+
+                    <div class="same-category-products__price">
+
+                        <?= $block->escapeHtml(
+                            '$' . number_format(
+                                (float) $product->getFinalPrice(),
+                                2
+                            )
+                        ) ?>
+
+                    </div>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/x-magento-init">
+    {
+        ".same-category-products": {
+            "Codilar_SameCategorySlider/js/same-category-slider": {}
+        }
+    }
+</script>
+

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Catalog\Model\Product">
+
+        <plugin
+            name="codilar_showprice_product_price"
+            type="Codilar\ShowPrice\Plugin\ProductPricePlugin"
+        />
+
+    </type>
+
+
+    <!-- Custom Customer Login Logger -->
+
+    <type name="Codilar\ShowPrice\Logger\Handler">
+
+        <arguments>
+
+            <argument name="filesystem" xsi:type="object">
+                Magento\Framework\Filesystem\Driver\File
+            </argument>
+
+        </arguments>
+
+    </type>
+
+
+    <!-- Custom Logger -->
+
+    <virtualType name="Codilar\ShowPrice\Logger\CustomerLoginLogger"
+                 type="Magento\Framework\Logger\Monolog">
+
+        <arguments>
+
+            <argument name="name" xsi:type="string">
+                customer_login
+            </argument>
+
+            <argument name="handlers" xsi:type="array">
+
+                <item name="customer_login" xsi:type="object">
+                    Codilar\ShowPrice\Logger\Handler
+                </item>
+
+            </argument>
+
+        </arguments>
+
+    </virtualType>
+
+
+    <!-- Inject Custom Logger into CustomerLogin Observer -->
+
+    <type name="Codilar\ShowPrice\Observer\CustomerLogin">
+
+        <arguments>
+
+            <argument name="logger" xsi:type="object">
+                Codilar\ShowPrice\Logger\CustomerLoginLogger
+            </argument>
+
+        </arguments>
+
+    </type>
+
+</config>

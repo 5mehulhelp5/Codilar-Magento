@@ -1,0 +1,45 @@
+.quick-view-button {
+    margin-left: 10px;
+}
+
+.quick-view-product {
+    display: flex;
+    gap: 30px;
+}
+
+.quick-view-image {
+    width: 45%;
+}
+
+.quick-view-image img {
+    width: 100%;
+    height: auto;
+}
+
+.quick-view-details {
+    width: 55%;
+}
+
+.quick-view-details h2 {
+    margin-top: 0;
+}
+
+.quick-view-description {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .quick-view-product {
+        display: block;
+    }
+
+    .quick-view-image,
+    .quick-view-details {
+        width: 100%;
+    }
+
+    .quick-view-details {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,40 @@
+.product-info-price {
+    position: relative;
+}
+
+/* Price row */
+.product-info-price .price-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Special/Selling Price */
+.product-info-price .price-box .special-price {
+    display: inline-block;
+}
+
+/* Regular/Old Price */
+.product-info-price .price-box .old-price {
+    display: inline-block;
+}
+
+/* Hide "Regular Price" text */
+.product-info-price .price-box .old-price .price-label {
+    display: none !important;
+}
+
+/* Cross the regular price */
+.product-info-price .price-box .old-price .price {
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+/* Discount */
+.product-info-price .discount {
+    display: inline-block;
+    margin-left: 10px;
+    color: #ff5500;
+    font-size: 16px;
+    font-weight: 500;
+}

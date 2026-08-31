@@ -1,0 +1,60 @@
+<?php
+/** @var \Codilar\QwickView\Block\Product\QuickView $block */
+?>
+
+<div id="quick-view-popup" style="display: none;">
+
+    <div class="quick-view-loader">
+        <?= $block->escapeHtml(__('Loading...')) ?>
+    </div>
+
+    <div class="quick-view-product" style="display: none;">
+
+        <div class="quick-view-image">
+            <img
+                id="quick-view-product-image"
+                src=""
+                alt=""
+            >
+        </div>
+
+        <div class="quick-view-details">
+
+            <h2 id="quick-view-product-name"></h2>
+
+            <p>
+                <strong><?= $block->escapeHtml(__('Price:')) ?></strong>
+                <span id="quick-view-product-price"></span>
+            </p>
+
+            <p>
+                <strong><?= $block->escapeHtml(__('SKU:')) ?></strong>
+                <span id="quick-view-product-sku"></span>
+            </p>
+
+            <p>
+                <strong><?= $block->escapeHtml(__('Stock:')) ?></strong>
+                <span id="quick-view-product-stock"></span>
+            </p>
+
+            <div class="quick-view-description">
+                <strong><?= $block->escapeHtml(__('Description:')) ?></strong>
+
+                <div id="quick-view-product-description"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Codilar_QwickView/js/quickview": {
+                "ajaxUrl": "<?= $block->escapeUrl($block->getQuickViewUrl()) ?>"
+        }
+    }
+}
+</script>

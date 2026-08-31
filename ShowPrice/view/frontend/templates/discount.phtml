@@ -1,0 +1,11 @@
+<?php
+/** @var \Codilar\ShowPrice\Block\Discount $block */
+
+$discount = $block->getDiscountPercentage();
+?>
+
+<?php if ($discount > 0): ?>
+    <span class="discount">
+        (<?= $discount ?>% Off)
+    </span>
+<?php endif; ?>

@@ -1,0 +1,158 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var \Magento\Catalog\Block\Product\View $block */
+
+$product = $block->getProduct();
+?>
+
+<?php if ($product && $product->isSaleable()): ?>
+
+    <div id="product-enquiry-modal" style="display: none;">
+
+        <div id="product-enquiry-form"
+             data-submit-url="<?= $block->escapeUrl(
+                 $block->getUrl('productenquiry/index/submit')
+             ) ?>">
+
+            <?= $block->getBlockHtml('formkey') ?>
+
+
+            <div class="field required">
+
+                <label class="label" for="enquiry-name">
+                    <span>
+                        <?= $block->escapeHtml(__('Name')) ?>
+                    </span>
+                </label>
+
+                <div class="control">
+
+                    <input type="text"
+                           name="name"
+                           id="enquiry-name"
+                           class="input-text">
+
+                </div>
+
+            </div>
+
+
+            <div class="field required">
+
+                <label class="label" for="enquiry-email">
+                    <span>
+                        <?= $block->escapeHtml(__('Email')) ?>
+                    </span>
+                </label>
+
+                <div class="control">
+
+                    <input type="email"
+                           name="email"
+                           id="enquiry-email"
+                           class="input-text">
+
+                </div>
+
+            </div>
+
+
+            <div class="field required">
+
+                <label class="label" for="enquiry-address">
+                    <span>
+                        <?= $block->escapeHtml(__('Address')) ?>
+                    </span>
+                </label>
+
+                <div class="control">
+
+                    <textarea name="address"
+                              id="enquiry-address"
+                              class="input-text"
+                              rows="3"></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="field required">
+
+                <label class="label" for="enquiry-sku">
+                    <span>
+                        <?= $block->escapeHtml(__('SKU')) ?>
+                    </span>
+                </label>
+
+                <div class="control">
+
+                    <input type="text"
+                           name="sku"
+                           id="enquiry-sku"
+                           class="input-text"
+                           value="<?= $block->escapeHtmlAttr(
+                               $product->getSku()
+                           ) ?>"
+                           readonly>
+
+                </div>
+
+            </div>
+
+
+            <div class="field required">
+
+                <label class="label" for="enquiry-qty">
+                    <span>
+                        <?= $block->escapeHtml(__('Qty')) ?>
+                    </span>
+                </label>
+
+                <div class="control">
+
+                    <input type="number"
+                           name="qty"
+                           id="enquiry-qty"
+                           class="input-text"
+                           min="1"
+                           value="1">
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button type="button"
+                        id="product-enquiry-submit"
+                        class="action primary">
+
+                    <span>
+                        <?= $block->escapeHtml(__('Submit')) ?>
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div id="product-enquiry-message"></div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        require([
+            'Codilar_ProductEnquiry/js/product-enquiry'
+        ], function (productEnquiry) {
+            productEnquiry();
+        });
+    </script>
+
+<?php endif; ?>

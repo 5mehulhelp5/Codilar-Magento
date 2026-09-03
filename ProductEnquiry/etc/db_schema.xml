@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="codilar_product_enquiry"
+           resource="default"
+           engine="innodb"
+           comment="Product Enquiry">
+
+        <column xsi:type="int"
+                name="entity_id"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Entity ID"/>
+
+        <column xsi:type="varchar"
+                name="name"
+                length="255"
+                nullable="false"
+                comment="Name"/>
+
+        <column xsi:type="varchar"
+                name="email"
+                length="255"
+                nullable="false"
+                comment="Email"/>
+
+        <column xsi:type="text"
+                name="address"
+                nullable="false"
+                comment="Address"/>
+
+        <column xsi:type="varchar"
+                name="sku"
+                length="255"
+                nullable="false"
+                comment="SKU"/>
+
+        <column xsi:type="int"
+                name="qty"
+                unsigned="true"
+                nullable="false"
+                comment="Quantity"/>
+
+        <column xsi:type="timestamp"
+                name="created_at"
+                nullable="false"
+                default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+
+        <constraint xsi:type="primary"
+                    referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+
+    </table>
+</schema>
